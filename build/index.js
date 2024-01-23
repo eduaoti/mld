@@ -16,6 +16,7 @@ const usuarioRoutes_1 = __importDefault(require("./routes/usuarioRoutes"));
 const rolUserRouter_1 = __importDefault(require("./routes/rolUserRouter"));
 const loginRoutes_1 = __importDefault(require("./routes/loginRoutes"));
 const editaractRouter_1 = __importDefault(require("./routes/editaractRouter"));
+const config_1 = require("./config");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -23,7 +24,7 @@ class Server {
         this.routes();
     }
     config() {
-        this.app.set('port', process.env.PORT || 3000);
+        this.app.set('port', config_1.PORT);
         this.app.use((0, morgan_1.default)('dev'));
         this.app.use((0, cors_1.default)());
         this.app.use(express_1.default.json());

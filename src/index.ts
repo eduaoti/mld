@@ -11,6 +11,7 @@ import usuarioRoutes from './routes/usuarioRoutes';
 import rolUserRouter from './routes/rolUserRouter';
 import loginRoutes from './routes/loginRoutes';
 import editaractRouter from './routes/editaractRouter';
+import { PORT } from './config';
 class Server{
     public app : Application
 
@@ -22,7 +23,7 @@ class Server{
 
 
     config():void{
-        this.app.set('port',process.env.PORT || 3000);
+        this.app.set('port',PORT);
         this.app.use(morgan('dev'));
         this.app.use(cors());
         this.app.use(express.json());

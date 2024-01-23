@@ -31,7 +31,7 @@ class Server {
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     routes() {
-        this.app.use('/', indexRoutes_1.default);
+        this.app.use(indexRoutes_1.default);
         this.app.use('/api/actividades', actividadesRoutes_1.default);
         this.app.use('/api/histact', histactRoutes_1.default);
         this.app.use('/api/user', usuarioRoutes_1.default);

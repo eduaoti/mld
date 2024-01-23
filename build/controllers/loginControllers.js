@@ -8,16 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const database_1 = __importDefault(require("../database"));
+const database_1 = require("../database");
 class LoginController {
     login(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             const { correo, password1 } = req.body;
-            const usuario = yield database_1.default.query('SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?', [correo, password1]);
+            const usuario = yield database_1.pool.query('SELECT * FROM usuarios WHERE correo = ? AND contrasena = ?', [correo, password1]);
             if (usuario.length > 0) {
                 // Si el usuario existe y las credenciales son correctas
                 resp.json({ success: true, message: "Inicio de sesión exitoso", usuario: usuario });

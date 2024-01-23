@@ -30,7 +30,7 @@ class Server{
         this.app.use(express.urlencoded({extended:false}));
     }
     routes():void{
-        this.app.use(indexRoutes);
+        this.app.use('/', indexRoutes);
         this.app.use('/api/actividades',actividadesRoutes);
         this.app.use('/api/histact',HistActRoutes);
         this.app.use('/api/user',usuarioRoutes);

@@ -1,7 +1,7 @@
 // HistActController.ts
 
 import { Request, Response } from 'express';
-import pool from '../database';
+import {pool} from '../database';
 
 class HistActController {
   public async list(req: Request, res: Response): Promise<void> {

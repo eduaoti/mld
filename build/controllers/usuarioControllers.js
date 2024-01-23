@@ -8,36 +8,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.userController = void 0;
-const database_1 = __importDefault(require("../database"));
+const database_1 = require("../database");
 class UserController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const act = yield database_1.default.query('SELECT * FROM usuarios ');
+            const act = yield database_1.pool.query('SELECT * FROM usuarios ');
             res.json(act);
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield database_1.default.query('INSERT INTO usuarios set ? ', [req.body]);
+            yield database_1.pool.query('INSERT INTO usuarios set ? ', [req.body]);
             res.json({ message: 'User Guardada' });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('UPDATE usuarios set ?  WHERE idUsuario = ?', [req.body, id]);
+            yield database_1.pool.query('UPDATE usuarios set ?  WHERE idUsuario = ?', [req.body, id]);
             res.json({ message: 'La actividad se actualizo' });
         });
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const games = yield database_1.default.query('SELECT * FROM usuarios WHERE idUsuario = ?', [id]);
+            const games = yield database_1.pool.query('SELECT * FROM usuarios WHERE idUsuario = ?', [id]);
             console.log(games.length);
             if (games.length > 0) {
                 return res.json(games[0]);

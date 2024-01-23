@@ -1,10 +1,10 @@
 export default {
 
     database: {
-        host: 'localhost',
+        host: 'roundhouse.proxy.rlwy.net',
         user: 'root',
-        password: '',
-        database: 'controlactividades'
+        password: '4CeEf41EDHHAHHhb-Cgf6Bb4b4dff3A1',
+        database: 'railway'
     }
 
 }
